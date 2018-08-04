@@ -10,6 +10,8 @@
 
 ## Check for ubuntu 16.04 an dinstall bubble wrap
 DISTRIB_RELEAS=$(grep "DISTRIB_RELEASE" /etc/lsb-release | awk -F '=' '{print $2}')
+TEZOS_NETWORK="zeronet"
+
 if [[ DISTRIB_RELEASE == "16.04" ]]; then
     sudo add-apt-repository ppa:ansible/bubblewrap -y
     sudo add-apt-repository ppa:git-core/ppa -y
@@ -25,7 +27,7 @@ sudo cp opam-*linux /usr/local/bin/opam
 sudo chmod a+x /usr/local/bin/opam
 git clone https://gitlab.com/tezos/tezos.git
 cd tezos
-git checkout betanet
+git checkout "$TEZOS_NETWORK"
 opam init --bare
 make build-deps
 eval $(opam env)
