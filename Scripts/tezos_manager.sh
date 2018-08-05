@@ -71,15 +71,21 @@ case "$1" in
     bs)
         baker_start
         ;;
+    originate-account)
+        echo "enter account name for originated account"
+        read -r originated_account
+        echo "$originated_account"
+        ;;
     *)
         echo "Invalid invocation, $1 is not a valid command"
         echo ""
-        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start]"
+        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | originate-account]"
         echo ""
         echo "list-protocols, lp - list understood protocols"
         echo "run-node, rn - used to launch a tezos node"
         echo "bootstrapped, bp - used to check if the node is bootstrapped"
         echo "baker-start, bs - used to start the baker"
+        echo "originate-account - used to originate a new account"
         exit 1
 
 esac

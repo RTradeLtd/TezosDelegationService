@@ -14,6 +14,7 @@ repo for our tezos delegation service
 ## Tutorials/Resources
 
 * [baking how to](https://gist.github.com/dakk/bdf6efe42ae920acc660b20080a506dd)
+* [baking explained](https://www.reddit.com/r/tezos/comments/92p29s/tezos_baking_explained/)
 
 ## Troubleshooting
 
