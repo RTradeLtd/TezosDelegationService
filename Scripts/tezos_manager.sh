@@ -45,6 +45,21 @@ baker_start() {
     tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
 }
 
+activate_account() {
+    echo "enter account name"
+    read -r ACCOUNT_NAME
+    echo "enter path to json key file"
+    read -r KEY_FILE
+    tezos-client activate account "$ACCOUNT_NAME" with "$KEY_FILE"
+}
+
+originate_account_and_delegate() {
+    echo "enter account name"
+    read -r ACCOUNT_NAME
+    ORIGINATED_ACCOUNT_NAME="$ACCOUNT_NAME"-originated
+    echo "enter balance to delegate"
+    tezos-client originate account "$ORIGINATED_ACCOUNT_NAME" for "$ACCOUNT_NAME" transferring "$BALANCE" from "$ACCOUNT_NAME" --delegate "rtrade" --delegatable
+}
 case "$1" in
 
     list-protocols)
@@ -71,21 +86,29 @@ case "$1" in
     bs)
         baker_start
         ;;
+    activate-account)
+        activate_account
+        ;;
+    aa)
+        activate_account
+        ;;
     originate-account)
-        echo "enter account name for originated account"
-        read -r originated_account
-        echo "$originated_account"
+        originate_and_delegate_account
+        ;;
+    oa)
+        originate_and_delegate_account
         ;;
     *)
         echo "Invalid invocation, $1 is not a valid command"
         echo ""
-        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | originate-account]"
+        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | activate-account | originate-account]"
         echo ""
         echo "list-protocols, lp - list understood protocols"
         echo "run-node, rn - used to launch a tezos node"
         echo "bootstrapped, bp - used to check if the node is bootstrapped"
         echo "baker-start, bs - used to start the baker"
-        echo "originate-account - used to originate a new account"
+        echo "activate-account, aa - used to activate a new account"
+        echo "originate-account, oa - used to originate a new account"
         exit 1
 
 esac
