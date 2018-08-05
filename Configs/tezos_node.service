@@ -6,7 +6,8 @@ After=network.target
 [Service]
 Type=simple
 PIDFile=/var/run/tezos_node.pid
-ExecStart=/boot_scripts/tezos_manager.sh run_node
+ExecStart=/boot_scripts/tezos_manager.sh run-node
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target tezos_baker.service
+RequiredBy=tezos_baker.service

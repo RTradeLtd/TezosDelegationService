@@ -13,6 +13,8 @@ RPC_ADDR="127.0.0.1:8732"
 TEZOS_NODE_PATH="/home/rtrade/.tezos-node"
 # tezos node key name
 TEZOS_NODE_KEY_NAME="rtrade"
+# points to the tezos config file
+TEZOS_NODE_CONFIG_FILE="$TEZOS_NODE_PATH/config.json"
 
 if [[ "$DISCLAIMER_BYPASS" == "Y" ]]; then
     export TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER=Y
@@ -27,11 +29,11 @@ list_protocols() {
 run_node() {
     if [[ "$RPC_ADDR" != "" ]]; then
         echo "Running node, hit CTRL+C to exit"
-        nohup tezos-node run --rpc-addr="$RPC_ADDR"
+        nohup tezos-node run --rpc-addr="$RPC_ADDR" --data-dir="$TEZOS_NODE_PATH" --config-file="$TEZOS_NODE_CONFIG_FILE"
     fi
 
     echo "Running node, hit CTRL+C to exit"
-    nohup tezos-node run
+    nohup tezos-node run --data-dir="$TEZOS_NODE_PATH" --config-file="$TEZOS_NODE_CONFIG_FILE"
 
 }
 
@@ -42,6 +44,7 @@ boot_strapped() {
 baker_start() {
     tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
 }
+
 case "$1" in
 
     list-protocols)
