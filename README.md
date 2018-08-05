@@ -8,7 +8,9 @@ repo for our tezos delegation service
 
 * `tezos_install.sh`
   * Used to install tezos node software
-
+* `tezos_manager.sh`
+  * Used to assist in managing a tezos node
+  
 ## Tutorials/Resources
 
 * [baking how to](https://gist.github.com/dakk/bdf6efe42ae920acc660b20080a506dd)
