@@ -1,0 +1,17 @@
+{
+
+  "data-dir": "/home/rtrade/.tezos-node",
+
+  "p2p": {
+      "listen-addr": "192.168.1.241:9732"
+  },
+
+  "log": {
+
+    "output": "tezos-node.log",
+
+    "level": "info",
+
+    "template": "$(date) - $(section): $(message)"
+  }
+}
