@@ -15,6 +15,8 @@ TEZOS_NODE_PATH="/home/rtrade/.tezos-node"
 TEZOS_NODE_KEY_NAME="rtrade"
 # points to the tezos config file
 TEZOS_NODE_CONFIG_FILE="$TEZOS_NODE_PATH/config.json"
+# log dir
+LOG_DIR="/home/rtrade"
 
 if [[ "$DISCLAIMER_BYPASS" == "Y" ]]; then
     export TEZOS_CLIENT_UNSAFE_DISABLE_DISCLAIMER=Y
@@ -38,15 +40,15 @@ run_node() {
 }
 
 run_endorser() {
-    nohup tezos-endorser-002-PsYLVpVv run "$TEZOS_NODE_KEY_NAME"
+    nohup tezos-endorser-002-PsYLVpVv run "$TEZOS_NODE_KEY_NAME" 2>&1 | tee --append "$LOG_DIR/tezos-endorser.log"
 }
 
 run_accuser() {
-    tezos-accuser-002-PsYLVpVv run
+    tezos-accuser-002-PsYLVpVv run 2>&1 | tee --append "$LOG_DIR/tezos-accuser.log"
 }
 
 baker_start() {
-    nohup tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
+    nohup tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME" 2>&1 | tee --append "$LOG_DIR/tezos-baker.log"
 }
 
 boot_strapped() {
