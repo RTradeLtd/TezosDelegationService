@@ -45,12 +45,12 @@ run_accuser() {
     tezos-accuser-002-PsYLVpVv run
 }
 
-boot_strapped() {
-    tezos-client bootstrapped
-}
-
 baker_start() {
     nohup tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
+}
+
+boot_strapped() {
+    tezos-client bootstrapped
 }
 
 activate_account() {
