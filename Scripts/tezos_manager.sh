@@ -58,8 +58,9 @@ originate_account_and_delegate() {
     read -r ACCOUNT_NAME
     ORIGINATED_ACCOUNT_NAME="$ACCOUNT_NAME"-originated
     echo "enter balance to delegate"
-    tezos-client originate account "$ORIGINATED_ACCOUNT_NAME" for "$ACCOUNT_NAME" transferring "$BALANCE" from "$ACCOUNT_NAME" --delegate "rtrade" --delegatable
+    tezos-client originate account "$ORIGINATED_ACCOUNT_NAME" for "$ACCOUNT_NAME" transferring "$BALANCE" from "$ACCOUNT_NAME" --delegate "$TEZOS_NODE_KEY_NAME" --delegatable
 }
+
 case "$1" in
 
     list-protocols)
