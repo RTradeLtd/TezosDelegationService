@@ -30,10 +30,10 @@ run_node() {
     if [[ "$RPC_ADDR" != "" ]]; then
         echo "Running node, hit CTRL+C to exit"
         nohup tezos-node run --rpc-addr="$RPC_ADDR" --data-dir="$TEZOS_NODE_PATH" --config-file="$TEZOS_NODE_CONFIG_FILE"
+    else
+        echo "Running node, hit CTRL+C to exit"
+        nohup tezos-node run --data-dir="$TEZOS_NODE_PATH" --config-file="$TEZOS_NODE_CONFIG_FILE"
     fi
-
-    echo "Running node, hit CTRL+C to exit"
-    nohup tezos-node run --data-dir="$TEZOS_NODE_PATH" --config-file="$TEZOS_NODE_CONFIG_FILE"
 
 }
 
