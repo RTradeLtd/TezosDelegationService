@@ -30,3 +30,4 @@ We are currently testing out a delegate on the Alphanet that was brought online 
 
 * [p2p.maintenance: Too few connections (0)](https://gitlab.com/tezos/tezos/issues/265)
 * [Technical FAQ](https://github.com/tezoscommunity/faq/wiki/Tezos-Technical-FAQ)
+* [Baking Rights](https://bakendorse.com)
