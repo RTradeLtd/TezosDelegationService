@@ -37,12 +37,20 @@ run_node() {
 
 }
 
+run_endorser() {
+    nohup tezos-endorser-002-PsYLVpVv run "$TEZOS_NODE_KEY_NAME"
+}
+
+run_accuser() {
+    tezos-accuser-002-PsYLVpVv run
+}
+
 boot_strapped() {
     tezos-client bootstrapped
 }
 
 baker_start() {
-    tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
+    nohup tezos-baker-002-PsYLVpVv run with local node "$TEZOS_NODE_PATH" "$TEZOS_NODE_KEY_NAME"
 }
 
 activate_account() {
@@ -99,10 +107,22 @@ case "$1" in
     oa)
         originate_and_delegate_account
         ;;
+    run-endorser)
+        run_endorser
+        ;;
+    re)
+        run_endorser
+        ;;
+    run-accuser)
+        run_accuser
+        ;;
+    ra)
+        run_accuser
+        ;;
     *)
         echo "Invalid invocation, $1 is not a valid command"
         echo ""
-        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | activate-account | originate-account]"
+        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | activate-account | originate-account | run-endorser | run-accuser]"
         echo ""
         echo "list-protocols, lp - list understood protocols"
         echo "run-node, rn - used to launch a tezos node"
@@ -110,6 +130,8 @@ case "$1" in
         echo "baker-start, bs - used to start the baker"
         echo "activate-account, aa - used to activate a new account"
         echo "originate-account, oa - used to originate a new account"
+        echo "run-endorser, re - run an endorser"
+        echo "run-accuser, ra - run an accuser"
         exit 1
 
 esac
