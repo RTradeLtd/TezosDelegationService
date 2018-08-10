@@ -22,6 +22,7 @@ We are currently testing out a delegate on the Alphanet that was brought online 
 * [baking how to](https://gist.github.com/dakk/bdf6efe42ae920acc660b20080a506dd)
 * [baking explained](https://www.reddit.com/r/tezos/comments/92p29s/tezos_baking_explained/)
 * [how to calculate income](https://hackernoon.com/how-much-income-does-tezos-pay-and-how-to-earn-baking-income-46743bb28e3b)
+* [security deposits](https://tezos.gitlab.io/betanet/whitedoc/proof_of_stake.html#security-deposits)
 
 ### Distributing Rewards among Delegaters
 
