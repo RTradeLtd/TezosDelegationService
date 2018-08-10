@@ -21,6 +21,11 @@ We are currently testing out a delegate on the Alphanet that was brought online 
 
 * [baking how to](https://gist.github.com/dakk/bdf6efe42ae920acc660b20080a506dd)
 * [baking explained](https://www.reddit.com/r/tezos/comments/92p29s/tezos_baking_explained/)
+* [how to calculate income](https://hackernoon.com/how-much-income-does-tezos-pay-and-how-to-earn-baking-income-46743bb28e3b)
+
+### Distributing Rewards among Delegaters
+
+* [how to payout rewards to deleguees](https://www.reddit.com/r/tezos/comments/8xf9rh/how_to_pay_out_rewards_to_deleguees/)
 
 ## Troubleshooting
 
