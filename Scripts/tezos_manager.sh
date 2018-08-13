@@ -83,6 +83,12 @@ transfer_tokens() {
     tezos-client transfer "$AMOUNT" from "$SOURCE_ACCOUNT" to "$DESTINATION_ACCOUNT" --fee "$FEE"
 }
 
+get_balance() {
+    echo "enter account to get balance for"
+    read -r ACCOUNT
+    tezos-client get balance for "$ACCOUNT"
+}
+
 case "$1" in
 
     list-protocols)
@@ -139,10 +145,16 @@ case "$1" in
     tt)
         transfer_tokens
         ;;
+    get-balance)
+        get_balance
+        ;;
+    gb)
+        get_balance
+        ;;
     *)
         echo "Invalid invocation, $1 is not a valid command"
         echo ""
-        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | activate-account | originate-account | run-endorser | run-accuser | transfer-tokens]"
+        echo "./tezos_manager.sh [list-protocols | run-node | bootstrapped | baker-start | activate-account | originate-account | run-endorser | run-accuser | transfer-tokens | get-balance]"
         echo ""
         echo "list-protocols, lp - list understood protocols"
         echo "run-node, rn - used to launch a tezos node"
@@ -153,6 +165,7 @@ case "$1" in
         echo "run-endorser, re - run an endorser"
         echo "run-accuser, ra - run an accuser"
         echo "transfer-tokens, tt - transfer tokens"
+        echo "get-balanace, gb - get balance"
         exit 1
 
 esac
